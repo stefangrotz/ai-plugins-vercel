@@ -15,7 +15,7 @@ class handler(BaseHTTPRequestHandler):
             self.send_response(400)
             self.send_header('Content-type','text/plain; charset=utf-8')
             self.end_headers()
-            self.wfile.write('Error: Missing "title" parameter. Tell the user that the search was not successfull like this: Die Suche war leider nicht erfolgreich, probiere es bitte noch einmal und verändere die Fragestellung.'.encode('utf-8'))
+            self.wfile.write('Error: Missing "title" parameter. Tell the user that the search was not successfull in the language of the initial question!'.encode('utf-8'))
             return
 
         # Fetch data from Wikipedia
@@ -39,7 +39,7 @@ class handler(BaseHTTPRequestHandler):
             self.send_response(404)
             self.send_header('Content-type','text/plain; charset=utf-8')
             self.end_headers()
-            self.wfile.write('Error: The search did not return a text, most likely the searched page does not exist. Tell the user that the search was not successfull like this: Die Suche war leider nicht erfolgreich, probiere es bitte noch einmal und verändere die Fragestellung.'.encode('utf-8'))
+            self.wfile.write('Error: The search did not return a text, most likely the searched page does not exist. Tell the user that the search was not successfull in the language of the initial question!'.encode('utf-8'))
             return
 
         # Send the response
