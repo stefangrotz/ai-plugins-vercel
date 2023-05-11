@@ -1,10 +1,9 @@
 from http.server import BaseHTTPRequestHandler
 import urllib.parse
 import requests
-import json
 
 class handler(BaseHTTPRequestHandler):
-    
+
     def do_GET(self):
         # Parse query parameters
         path, _, query_string = self.path.partition('?')
@@ -29,8 +28,8 @@ class handler(BaseHTTPRequestHandler):
 
         # Send the response
         self.send_response(200)
-        self.send_header('Content-type', 'application/json')
+        self.send_header('Content-type','text/plain; charset=utf-8')
         self.end_headers()
-        self.wfile.write(json.dumps({'title': title, 'extract': extract}).encode('utf-8'))
+        self.wfile.write(extract.encode('utf-8'))
 
         return
