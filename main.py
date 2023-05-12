@@ -19,7 +19,7 @@ class handler(BaseHTTPRequestHandler):
             return
 
         # Fetch data from Wikipedia
-        response = requests.get('https://de.wikipedia.org/w/api.php', params={
+        response = requests.get('https://bar.wikipedia.org/w/api.php', params={
             'format': 'json',
             'action': 'query',
             'prop': 'extracts',
@@ -36,7 +36,7 @@ class handler(BaseHTTPRequestHandler):
 
         if not extract:
             # If the search did not return a text, find similar articles
-            response = requests.get('https://de.wikipedia.org/w/api.php', params={
+            response = requests.get('https://bar.wikipedia.org/w/api.php', params={
                 'action': 'opensearch',
                 'profile': 'fuzzy',
                 'search': title,
